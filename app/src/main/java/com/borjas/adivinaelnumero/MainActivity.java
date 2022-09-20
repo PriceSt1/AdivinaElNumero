@@ -12,10 +12,11 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private static String NUMERO = "5";
+    private static String NUMERO = "0";
     private final String[] numUser = new String[1];
     private static int puntuacionJ1 = 0;
     private static int puntuacionJ2 = 0;
+    private int numRandom = new Random().nextInt(10);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdivinar.setText("Adivinar");
         btnRandom.setText(null);
         etEntrada.setText("¡Pulsame!");
+        NUMERO = String.valueOf(numRandom);
 
 
         //Creo un metodo que ejecute una accion al clicar el boton adivinar
@@ -65,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         btnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int numRandom = new Random().nextInt(10);
                 NUMERO = String.valueOf(numRandom);
             }
         });
