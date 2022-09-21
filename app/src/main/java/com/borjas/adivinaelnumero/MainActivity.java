@@ -3,6 +3,7 @@ package com.borjas.adivinaelnumero;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,11 +13,9 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private static String NUMERO = "0";
     private final String[] numUser = new String[1];
     private static int puntuacionJ1 = 0;
     private static int puntuacionJ2 = 0;
-    private int numRandom = new Random().nextInt(10);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         EditText etEntrada = findViewById(R.id.et_Num);
         TextView tvPuntuacionJ1 = findViewById(R.id.tv_puntuacionJ1);
         TextView tvPuntuacionJ2 = findViewById(R.id.tv_puntuacionJ2);
+        NumeroSecreto numeroSecreto = new NumeroSecreto();
 
 
         //Bloque de codigo el cual Sobreescribo el texto de todos los objetos
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         btnAdivinar.setText("Adivinar");
         btnRandom.setText(null);
         etEntrada.setText("¡Pulsame!");
-        NUMERO = String.valueOf(numRandom);
 
 
         //Creo un metodo que ejecute una accion al clicar el boton adivinar
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 numUser[0] = String.valueOf(etEntrada.getText());
-                if (numUser[0].equals(NUMERO)){
+                if (numUser[0].equals(numeroSecreto.numToString())){
                     mostrarToast("¡Enhorabuena es el mismo numero!");
                     puntuacionJ1++;
                     tvPuntuacionJ1.setText(String.valueOf(puntuacionJ1));
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         btnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NUMERO = String.valueOf(numRandom);
+               numeroSecreto.generarNumRand();
             }
         });
 
