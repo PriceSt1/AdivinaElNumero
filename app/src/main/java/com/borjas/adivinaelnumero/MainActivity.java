@@ -13,7 +13,6 @@ import android.widget.Toast;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private final String[] numUser = new String[1];
     private static int puntuacionJ1 = 0;
     private static int puntuacionJ2 = 0;
 
@@ -22,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String[] numUser = new String[1];
 
         // Declaramos e instanciamos las variables
         TextView tvExplain = findViewById(R.id.tv_Explain);
